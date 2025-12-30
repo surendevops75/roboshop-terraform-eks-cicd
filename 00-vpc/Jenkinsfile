@@ -11,6 +11,7 @@ pipeline {
     options {
         timeout(time: 10, unit: 'MINUTES')
         disableConcurrentBuilds()
+        ansiColor('xterm')
     }
     // parameters {
     //     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
@@ -24,18 +25,24 @@ pipeline {
         stage('init') {
             steps {
                 script{
-                    sh """
-                        terraform init
-                    """
+                    withAWS(region:'us-east-1',credentials:'aws-creds') {
+                        sh """
+                            cd 00-vpc
+                            terraform init
+                        """
+                    }
                 }
             }
         }
         stage('Plan') {
             steps {
                 script{
-                    sh """
-                        terraform plan
-                    """
+                    withAWS(region:'us-east-1',credentials:'aws-creds') {
+                        sh """
+                            cd 00-vpc
+                            terraform plan
+                        """
+                    }
                 }
             }
         }
@@ -50,9 +57,12 @@ pipeline {
             }
             steps {
                script{
-                    sh """
-                        terraform apply -auto-approve
-                    """
+                    withAWS(region:'us-east-1',credentials:'aws-creds') {
+                        sh """
+                            cd 00-vpc
+                            terraform apply -auto-approve
+                        """
+                    }
                 }
             }
         }
