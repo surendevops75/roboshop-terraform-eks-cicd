@@ -47,14 +47,6 @@ pipeline {
             }
         }
         stage('Deploy') {
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-                submitter "alice,bob"
-                parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                }
-            }
             steps {
                script{
                     withAWS(region:'us-east-1',credentials:'aws-creds') {
@@ -66,10 +58,59 @@ pipeline {
                 }
             }
         }
-        stage('Trigger SG') {
+        stage('Parallel Trigger'){
+            parallel {
+                stage('Trigger bastion'){
+                    steps {
+                        script {
+                            build job: '20-bastion',
+                                wait: false, // Wait for completion
+                                propagate: false // Propagate status
+                        }
+                    }
+                }
+                stage('Trigger SgRules'){
+                    steps {
+                        script {
+                            build job: '30-sg-rules',
+                                wait: false, // Wait for completion
+                                propagate: false // Propagate status
+                        }
+                    }
+                }
+                stage('Trigger ECR'){
+                    steps {
+                        script {
+                            build job: '40-ecr',
+                                wait: false, // Wait for completion
+                                propagate: false // Propagate status
+                        }
+                    }
+                }
+                stage('Trigger ACM'){
+                    steps {
+                        script {
+                            build job: '70-acm',
+                                wait: false, // Wait for completion
+                                propagate: false // Propagate status
+                        }
+                    }
+                }
+                stage('Trigger EKS'){
+                    steps {
+                        script {
+                            build job: '90-eks',
+                                wait: false, // Wait for completion
+                                propagate: false // Propagate status
+                        }
+                    }
+                }
+            }
+        }
+        stage('Trigger ALB'){
             steps {
                 script {
-                    build job: '10-sg',
+                    build job: '80-frontend-alb',
                         wait: false, // Wait for completion
                         propagate: false // Propagate status
                 }
