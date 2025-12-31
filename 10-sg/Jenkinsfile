@@ -100,7 +100,7 @@ pipeline {
                     steps {
                         script {
                             build job: '90-eks',
-                                wait: false, // Wait for completion
+                                wait: true, // Wait for completion
                                 propagate: false // Propagate status
                         }
                     }
