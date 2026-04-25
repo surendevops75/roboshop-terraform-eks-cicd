@@ -82,11 +82,11 @@ terraform apply -auto-approve
 Developer → CI/CD Pipeline → ECR → EKS Cluster → ALB → Users
 
 📈 Real-Time Use Cases
-Automated Kubernetes platform creation for Dev/Test/Prod
-Containerized microservices deployment on EKS
-Secure and scalable infrastructure provisioning
-Faster environment setup using Terraform automation
-Standardized CI/CD platform deployment
+- Automated Kubernetes platform creation for Dev/Test/Prod
+- Containerized microservices deployment on EKS
+- Secure and scalable infrastructure provisioning
+- Faster environment setup using Terraform automation
+- Standardized CI/CD platform deployment
 
 👨‍💻 Author
 
