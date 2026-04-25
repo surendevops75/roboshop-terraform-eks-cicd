@@ -42,7 +42,6 @@ It automates networking, security, container registry, load balancing, SSL, and 
 
 ## 📂 Repository Structure
 
-```bash
 00-vpc
 10-sg
 20-bastion
@@ -54,7 +53,7 @@ It automates networking, security, container registry, load balancing, SSL, and 
 
 ---
 
-🚀 Deployment Steps
+## 🚀 Deployment Steps
 
 git clone <repo-url>
 cd roboshop-terraform-eks-cicd
@@ -65,7 +64,7 @@ terraform apply -auto-approve
 
 ---
 
-🔐 Key Features
+## 🔐 Key Features
 
 - Modular Terraform Architecture
 - EKS Cluster Automation
@@ -77,7 +76,7 @@ terraform apply -auto-approve
 
 ---
 
-📸 Architecture Flow
+## 📸 Architecture Flow
 
 Developer → CI/CD Pipeline → ECR → EKS Cluster → ALB → Users
 
@@ -88,7 +87,7 @@ Developer → CI/CD Pipeline → ECR → EKS Cluster → ALB → Users
 - Faster environment setup using Terraform automation
 - Standardized CI/CD platform deployment
 
-👨‍💻 Author
+## 👨‍💻 Author
 
 Surendra DevOps Engineer
 
