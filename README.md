@@ -57,13 +57,14 @@ It automates networking, security, container registry, load balancing, SSL, and 
 
 ## 🚀 Deployment Steps
 
+```bash
 git clone <repo-url>
 cd roboshop-terraform-eks-cicd
 
 terraform init
 terraform plan
 terraform apply -auto-approve
-
+```
 ---
 
 ## 🔐 Key Features
