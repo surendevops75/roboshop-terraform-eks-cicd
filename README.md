@@ -42,6 +42,7 @@ It automates networking, security, container registry, load balancing, SSL, and 
 
 ## 📂 Repository Structure
 
+```bash
 00-vpc
 10-sg
 20-bastion
