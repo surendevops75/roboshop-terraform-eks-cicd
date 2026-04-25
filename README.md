@@ -21,6 +21,7 @@ It automates networking, security, container registry, load balancing, SSL, and 
 - ACM
 - Kubernetes
 - Linux
+- Docker
 
 ---
 
@@ -90,8 +91,12 @@ Developer → CI/CD Pipeline → ECR → EKS Cluster → ALB → Users
 - Faster environment setup using Terraform automation
 - Standardized CI/CD platform deployment
 
+---
+
 ## 👨‍💻 Author
 
-Surendra DevOps Engineer
+Surendra 
+DevOps Engineer
+---
 
 ⭐ If you like this project, give it a star
